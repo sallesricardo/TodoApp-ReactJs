@@ -32,6 +32,9 @@ class todo extends Component {
   constructor(props) {
     super(props);
 
+    this.updateTitle = props.updateTitle;
+    this.updateTitle();
+
     this.state = {
       todos: "",
       title: "",
@@ -48,6 +51,8 @@ class todo extends Component {
     this.handleEditClickOpen = this.handleEditClickOpen.bind(this);
     this.handleViewOpen = this.handleViewOpen.bind(this);
   }
+
+  updateTitle = () => {};
 
   handleChange = (event) => {
     this.setState({
@@ -106,6 +111,7 @@ class todo extends Component {
   }
 
   render() {
+    this.updateTitle();
     const DialogTitle = withStyles(styles)((props) => {
       const { children, classes, onClose, ...other } = props;
       return (
@@ -383,7 +389,7 @@ const styles = (theme) => ({
     marginLeft: 13,
     marginTop: theme.spacing(3),
   },
-  toolbar: theme.mixins.toolbar,
+  //toolbar: theme.mixins.toolbar,
   root: {
     minWidth: 470,
   },

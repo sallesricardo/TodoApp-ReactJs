@@ -24,6 +24,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { authMiddleWare } from "../util/auth";
 
 const drawerWidth = 240;
+const title = "Todo - ";
 
 class home extends Component {
   state = {
@@ -36,6 +37,10 @@ class home extends Component {
 
   loadTodoPage = (event) => {
     this.setState({ render: false });
+  };
+
+  changeTitle = () => {
+    document.title = title + this.state.firstName;
   };
 
   logoutHandler = (event) => {
@@ -53,6 +58,7 @@ class home extends Component {
       uiLoading: true,
       imageLoading: false,
     };
+    document.title = title;
   }
 
   componentWillMount = () => {
@@ -73,6 +79,8 @@ class home extends Component {
           uiLoading: false,
           profilePicture: response.data.userCredentials.imageUrl,
         });
+        //username = response.data.userCredentials.firstName;
+        this.changeTitle();
       })
       .catch((error) => {
         if (error.response.status === 403) {
@@ -151,7 +159,13 @@ class home extends Component {
             </List>
           </Drawer>
 
-          <div>{this.state.render ? <Account /> : <Todo />}</div>
+          <div>
+            {this.state.render ? (
+              <Account />
+            ) : (
+              <Todo updateTitle={this.changeTitle} />
+            )}
+          </div>
         </div>
       );
     }

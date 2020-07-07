@@ -136,6 +136,7 @@ class account extends Component {
   };
 
   render() {
+    document.title = "Account Settings";
     const { classes, ...rest } = this.props;
     if (this.state.uiLoading === true) {
       return (

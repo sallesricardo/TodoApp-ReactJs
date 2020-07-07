@@ -29,6 +29,7 @@ class signup extends Component {
       errors: [],
       loading: false,
     };
+    document.title = "Signup";
   }
 
   componentWillReceiveProps(nextProps) {

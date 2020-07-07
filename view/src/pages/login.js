@@ -23,6 +23,7 @@ class login extends Component {
       errors: [],
       loading: false,
     };
+    document.title = "Login";
   }
 
   componentWillReceiveProps(nextProps) {
